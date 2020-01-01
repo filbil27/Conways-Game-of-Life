@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace filbil27.ConwaysGameOfLife
 {
@@ -26,13 +27,13 @@ namespace filbil27.ConwaysGameOfLife
         {
             _nextGeneration = CurrentGeneration;
 
-            for (int i = 0; i < GridSize; i++)
+            Parallel.For(0, GridSize, (i) =>
             {
-                for (int j = 0; j < GridSize; j++)
+                Parallel.For(0, GridSize, (j) =>
                 {
                     _nextGeneration[i, j] = GetCellsNextState(i, j);
-                }
-            }
+                });
+            });
 
             CurrentGeneration = _nextGeneration;
             _nextGeneration = null;
@@ -45,13 +46,13 @@ namespace filbil27.ConwaysGameOfLife
         {
             var random = new Random();
 
-            for (int i = 0; i < GridSize; i++)
+            Parallel.For(0, GridSize, (i) =>
             {
-                for (int j = 0; j < GridSize; j++)
+                Parallel.For(0, GridSize, (j) =>
                 {
-                    CurrentGeneration[i, j] = random.NextDouble() >= 0.95;
-                }
-            }
+                    CurrentGeneration[i, j] = random.NextDouble() >= 0.85;
+                });
+            });
         }
 
         /// <summary>

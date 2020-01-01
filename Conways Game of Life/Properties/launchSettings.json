@@ -2,7 +2,7 @@
   "profiles": {
     "Conways Game of Life": {
       "commandName": "Project",
-      "commandLineArgs": "-size 30"
+      "commandLineArgs": "-size 50"
     }
   }
 }

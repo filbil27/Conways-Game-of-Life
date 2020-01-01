@@ -19,7 +19,7 @@ namespace filbil27.ConwaysGameOfLife
             {
                 game.Tick();
                 OutputState(ref game);
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(250);
             }
         }
 
